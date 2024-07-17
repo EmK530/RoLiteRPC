@@ -136,7 +136,6 @@ bool SetupAllInfoFromPlaceID(std::wstring WplaceId)
         curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
         curl_easy_setopt(curl, CURLOPT_WRITEDATA, &response);
         curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
-        //https://games.roblox.com/v1/games?universeIds=1943254200
 
         CURLcode res = curl_easy_perform(curl);
         if (res != CURLE_OK) {
@@ -151,7 +150,7 @@ bool SetupAllInfoFromPlaceID(std::wstring WplaceId)
         return false;
     }
 
-    int universe = findUniverse["universeId"].get<int>();
+    int64_t universe = findUniverse["universeId"].get<int64_t>();
     std::cout << "Success: " << universe << "\nGetting universe info...\n";
 
     json universeInfo;
