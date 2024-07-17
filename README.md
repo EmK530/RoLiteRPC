@@ -11,8 +11,7 @@ Requires no credentials or installing.
 Because of the goal of being a "no setup" program, for proper detection you have to join games<br>
 from the Roblox website for RoLiteRPC to properly detect what you are playing.<br>
 
-You also can't leave and join another game from Roblox's in-app browser<br>
-otherwise RoLiteRPC will think you are still playing the same game.
+Switching games (using in-app or by game teleport) will not be detected properly.
 
 ## Visual Studio Setup
 In case you want to modify the code for yourself, you'll need to perform the necessary setup.<br>
