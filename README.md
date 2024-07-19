@@ -3,7 +3,7 @@ A lightweight background program that enables Rich Presence for Roblox Player.<b
 Requires no credentials or installing.
 
 ## How to Use
-* Download a version from the [releases](https://github.com/EmK530/BloxDump/releases) page.<br>
+* Download a version from the [releases](https://github.com/EmK530/RoLiteRPC/releases) page.<br>
 * Extract the program and DLLs into a folder.<br>
 * Then simply run RoLiteRPC and you should have Rich Presence for what you're playing!
 
