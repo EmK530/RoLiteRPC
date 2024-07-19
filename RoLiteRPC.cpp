@@ -46,6 +46,7 @@ bool GetProcessCommandLine(DWORD processId, std::wstring& imageName) {
     HANDLE hProcess = OpenProcess(PROCESS_QUERY_INFORMATION | PROCESS_VM_READ, FALSE, processId);
     if (!hProcess) {
         std::cerr << "Failed to open process" << std::endl;
+        MessageBox(0, L"Could not perform OpenProcess!\nYou may need to run RoLiteRPC as administrator.", L"Can't read place!", MB_ICONWARNING);
         FreeLibrary(hNtDll);
         return false;
     }
@@ -53,7 +54,8 @@ bool GetProcessCommandLine(DWORD processId, std::wstring& imageName) {
     auto buffer = std::make_unique<BYTE[]>(size);
     auto status = ntqueryfunc(hProcess, (PROCESSINFOCLASS)60, buffer.get(), size, &size);
     if (status != 0x00000000) { // Check for NT_SUCCESS macro
-        std::cerr << "NtQueryInformationProcess (ProcessImageFileName) failed with status 0x" << std::hex << status << std::endl;
+        std::cerr << "NtQueryInformationProcess failed with status 0x" << std::hex << status << std::endl;
+        MessageBox(0, L"NtQueryInformationProcess failed, please open an issue report about this!", L"Can't read place!", MB_ICONWARNING);
         CloseHandle(hProcess);
         FreeLibrary(hNtDll);
         return false;
